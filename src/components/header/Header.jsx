@@ -1,7 +1,7 @@
 import { useState } from "react";
 import userImg from "../../assets/sheldon.jfif";
 import menu from "../../assets/menu.png";
-import close from '../../assets/close.png'
+import close from "../../assets/close.png";
 
 // navbar icons
 const Person = () => (
@@ -63,14 +63,13 @@ const Search = () => (
   <>
     <div className="flex justify-between items-center">
       <input
-        className="w-52 lg:w-96 md:w-60 p-3  bg-transparent rounded-full shadow-lg hover:shadow-xl hover:border-purple-400 border border-slate-300"
+        className="w-52 lg:w-96 md:w-60 p-3  bg-transparent rounded-full shadow-lg hover:shadow-xl hover:border-purple-400 border border-slate-300 "
         type="text"
         placeholder="Search for friend, post or video"
       />
     </div>
   </>
 );
-
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
@@ -84,23 +83,23 @@ const Header = () => {
         </span>
       </div>
       {/* middle bar */}
-      <div className="hidden md:block lg:block">
+      <div className="hidden lg:block">
         <Search />
       </div>
       {/* right bar */}
 
-      <div className="lg:flex items-center justify-center font-mono hidden">
+      <div className="lg:flex items-center justify-center font-mono hidden ">
         {/* links */}
         <div>
-          <span className="mr-5 text-fuchsia-800 font-semibold hover:text-purple-900 cursor-pointer">
+          <span className="text-fuchsia-800 font-semibold hover:text-purple-900 cursor-pointer mr-3">
             Homepage
           </span>
-          <span className="mr-5 text-fuchsia-800 font-semibold hover:text-purple-900 cursor-pointer">
+          <span className="text-fuchsia-800 font-semibold hover:text-purple-900 cursor-pointer">
             Profile
           </span>
         </div>
         {/* icons */}
-        <div className="flex justify-center items-center text-fuchsia-900 md:hidden">
+        <div className="lg:flex justify-center items-center text-fuchsia-900 hidden">
           <span className="ml-5">
             {/* person */}
             <Person />
@@ -133,29 +132,29 @@ const Header = () => {
       </div>
 
       {toggle ? (
-        <div onClick={() => setToggle(false)}>
+        <div className="block lg:hidden" onClick={() => setToggle(false)}>
           <img
-            className="w-6 h-6 right-0 absolute mr-3"
+            className="w-6 h-6 ml-44 md:ml-72 absolute"
             src={close}
             alt="close"
           />
         </div>
       ) : (
-        <div onClick={() => setToggle(true)}>
+        <div className="block lg:hidden" onClick={() => setToggle(true)}>
           <img
-            className="w-6 h-6 right-0 absolute mr-3"
+            className="w-6 h-6 ml-44 md:ml-72 absolute"
             src={menu}
             alt="menu"
           />
         </div>
       )}
       {toggle && (
-        <div className="flex flex-col justify-center align mt-5">
-          <div className="mr-10 my-4">
+        <div className="flex flex-col justify-center mt-5 transition ease-in-out delay-500">
+          <div className="mr-36 my-4">
             <Search />
           </div>
 
-          <div className="flex flex-col items-center justify-center font-mono">
+          <div className="flex flex-col items-center justify-center font-mono transition ease-in-out delay-500">
             {/* links */}
             <div className="flex flex-col items-end justify-end">
               <span className="mr-5 text-fuchsia-800 font-semibold hover:text-purple-900 cursor-pointer">
@@ -192,7 +191,7 @@ const Header = () => {
             </div>
             {/* profile picture */}
             <img
-              className="w-10 h-10 rounded-full ml-5 shadow-xl hover:scale-125 transition delay-150 duration-300 ease-in-out"
+              className="w-10 h-10 rounded-full shadow-xl hover:scale-125 transition delay-150 duration-300 ease-in-out"
               src={userImg}
               alt="user image"
             />
