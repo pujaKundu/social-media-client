@@ -1,7 +1,11 @@
 import { Homepage } from "./pages/index";
 
 function App() {
-  return <Homepage />;
+  return (
+    <div>
+      <Homepage />;
+    </div>
+  );
 }
 
 export default App;

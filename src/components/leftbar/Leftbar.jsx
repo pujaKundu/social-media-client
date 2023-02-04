@@ -1,0 +1,66 @@
+import React from "react";
+import {
+  Feed,
+  Friends,
+  Recent,
+  Groups,
+  Saved,
+  Events,
+  Watch,
+  Memories,
+  Marketplace,
+} from "./imports";
+import Link from "./Link";
+import FriendImg from "../../assets/leonard.webp";
+
+
+const Leftbar = () => {
+  return (
+    <div className="flex flex-col pl-3 basis-1/4 mt-20 bg-yellow-100 overflow-y-scroll scroll-mx-0">
+      <div className="pt-4">
+        <Link key={Feed} src={Feed} text="Newsfeed" />
+        <Link key={Friends} src={Friends} text="Friends" />
+        <Link key={Recent} src={Recent} text="Most Recent" />
+        <Link key={Groups} src={Groups} text="Groups" />
+        <Link key={Events} src={Events} text="Events" />
+        <Link key={Marketplace} src={Marketplace} text="Marketplace" />
+        <Link key={Watch} src={Watch} text="Watch" />
+        <Link key={Memories} src={Memories} text="Memories" />
+        <Link key={Saved} src={Saved} text="Saved" />
+      </div>
+      <div>
+        <button className="bg-fuchsia-600 hover:bg-fuchsia-800 border-0 outline-0 text-white font-semibold my-5">
+          Show more
+        </button>
+      </div>
+      <div>
+        <div className="flex items-center my-2">
+          <img className="w-10 h-10 mr-2 rounded-full" src={FriendImg} alt="" />
+          Leonard Hofsteder
+        </div>
+        <div className="flex items-center my-2">
+          <img className="w-10 h-10 mr-2 rounded-full" src={FriendImg} alt="" />
+          Leonard Hofsteder
+        </div>
+        <div className="flex items-center my-2">
+          <img className="w-10 h-10 mr-2 rounded-full" src={FriendImg} alt="" />
+          Leonard Hofsteder
+        </div>
+        <div className="flex items-center my-2">
+          <img className="w-10 h-10 mr-2 rounded-full" src={FriendImg} alt="" />
+          Leonard Hofsteder
+        </div>
+        <div className="flex items-center my-2">
+          <img className="w-10 h-10 mr-2 rounded-full" src={FriendImg} alt="" />
+          Leonard Hofsteder
+        </div>
+        <div className="flex items-center my-2">
+          <img className="w-10 h-10 mr-2 rounded-full" src={FriendImg} alt="" />
+          Leonard Hofsteder
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Leftbar;
