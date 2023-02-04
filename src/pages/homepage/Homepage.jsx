@@ -2,9 +2,9 @@ import { Header, Newsfeed, Leftbar, Rightbar } from "../../components/index";
 
 const Homepage = () => {
   return (
-    <div className="mr-0 bg-gradient-to-r from-fuchsia-100 to-slate-100">
+    <div>
       <Header />
-      <div className="w-screen flex">
+      <div className="flex flex-row bg-slate-200 mt-20">
         <Leftbar />
         <Newsfeed />
         <Rightbar />

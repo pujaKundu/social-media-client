@@ -13,11 +13,10 @@ import {
 import Link from "./Link";
 import FriendImg from "../../assets/leonard.webp";
 
-
 const Leftbar = () => {
   return (
-    <div className="flex flex-col pl-3 basis-1/4 mt-20 bg-yellow-100 overflow-y-scroll scroll-mx-0">
-      <div className="pt-4">
+    <div className="flex flex-col basis-1/4 pl-4">
+      <div >
         <Link key={Feed} src={Feed} text="Newsfeed" />
         <Link key={Friends} src={Friends} text="Friends" />
         <Link key={Recent} src={Recent} text="Most Recent" />
@@ -29,7 +28,7 @@ const Leftbar = () => {
         <Link key={Saved} src={Saved} text="Saved" />
       </div>
       <div>
-        <button className="bg-fuchsia-600 hover:bg-fuchsia-800 border-0 outline-0 text-white font-semibold my-5">
+        <button className="bg-fuchsia-600 hover:bg-fuchsia-800 border-0 outline-0 text-white font-semibold mb-5">
           Show more
         </button>
       </div>
@@ -44,7 +43,7 @@ const Leftbar = () => {
         </div>
         <div className="flex items-center my-2">
           <img className="w-10 h-10 mr-2 rounded-full" src={FriendImg} alt="" />
-          Leonard Hofsteder
+          Leonard Hofstedar
         </div>
         <div className="flex items-center my-2">
           <img className="w-10 h-10 mr-2 rounded-full" src={FriendImg} alt="" />

@@ -19,7 +19,7 @@ const Header = () => {
   const [toggle, setToggle] = useState(false);
   return (
     // top navbar container
-    <div className="top-0 fixed grid grid-cols-3 gap-4 justify-items-center content-center w-screen py-3 bg-gradient-to-r from-indigo-100 to-fuchsia-100">
+    <div className="top-0 fixed grid grid-cols-3 gap-4 justify-items-center content-center py-3 bg-gradient-to-r from-indigo-100 to-fuchsia-100 w-full">
       {/* left bar */}
       <div className=" text-center ">
         <span className="lg:text-3xl text-lg font-bold text-blue-900 font-mono">
