@@ -1,6 +1,7 @@
 import React from "react";
 import Reactions from "./Reactions";
-import { user, post, dots, close } from "./imports";
+import { user, post, dots, close,love } from "./imports";
+import Comment from "./Comment";
 
 const Post = () => {
   return (
@@ -28,8 +29,9 @@ const Post = () => {
         <p className="pl-3 pb-3">Beautiful sunset!!</p>
         <img className="w-full" src={post} alt="post" />
       </div>
-      <div>
-        <Reactions />
+      <div className="flex">
+        <Reactions key="love" src={love} alt="love" />
+        <Comment/>
       </div>
     </div>
   );

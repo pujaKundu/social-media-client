@@ -6,7 +6,7 @@ import dots from "../../assets/dots.png";
 import close from "../../assets/close.png";
 import post from "../../assets/post-1.avif";
 import hump from "../../assets/hump.png";
-import sad from "../../assets/sad.png";
-import laugh from "../../assets/laughing.png";
+import comment from "../../assets/comment.png";
+import love from "../../assets/love.png";
 
-export { photos, live, feeling, user, dots, close, post, hump, sad, laugh };
+export { photos, live, feeling, user, dots, close, post, hump, comment, love };

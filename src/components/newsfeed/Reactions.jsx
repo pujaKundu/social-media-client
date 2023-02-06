@@ -1,11 +1,11 @@
 import React from 'react';
-import { hump, sad, laugh } from "./imports";
 
-const Reactions = () => {
+
+const Reactions = ({src}) => {
     return (
-        <div>
-            
-        </div>
+      <>
+        <img className="w-6 h-6 hover:scale-125 m-2" src={src} alt="love" />
+      </>
     );
 };
 
