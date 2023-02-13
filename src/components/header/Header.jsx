@@ -2,6 +2,7 @@ import { useState } from "react";
 import { menu, close } from "./imports";
 import ProfileImage from "./ProfileImage";
 import { Person, Notification, Chat } from "./icons";
+import { Link, Outlet } from "react-router-dom";
 
 const Search = () => (
   <>
@@ -35,12 +36,18 @@ const Header = () => {
       <div className="lg:flex items-center justify-center font-mono hidden ">
         {/* links */}
         <div>
-          <span className="text-fuchsia-800 font-semibold hover:text-purple-900 cursor-pointer mr-3">
+          <Link
+            to="/"
+            className="text-fuchsia-800 font-semibold hover:text-purple-900 cursor-pointer mr-3"
+          >
             Homepage
-          </span>
-          <span className="text-fuchsia-800 font-semibold hover:text-purple-900 cursor-pointer">
+          </Link>
+          <Link
+            to="/profile/:username"
+            className="text-fuchsia-800 font-semibold hover:text-purple-900 cursor-pointer"
+          >
             Profile
-          </span>
+          </Link>
         </div>
         {/* icons */}
         <div className="lg:flex justify-center items-center text-fuchsia-900 hidden">
@@ -66,6 +73,7 @@ const Header = () => {
           <p className="bg-slate-600 text-white w-4 h-4 rounded-lg  absolute top-5 ml-36">
             <span className="text-sm absolute  pl-1">4</span>
           </p>
+          
         </div>
         {/* profile picture */}
         <ProfileImage />

@@ -32,7 +32,7 @@ const Leftbar = () => {
           </div>
 
           <div>
-            <button className="bg-fuchsia-600 hover:bg-fuchsia-800 border-0 outline-0 text-white font-semibold mb-5">
+            <button className="bg-blue-800 hover:bg-blue-900 border-0 outline-0 text-white font-semibold mb-5">
               Show more
             </button>
           </div>
