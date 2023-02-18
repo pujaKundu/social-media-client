@@ -1,4 +1,4 @@
-import { useState, useEffect,useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import Reactions from "./Reactions";
 import { dots, close, love } from "./imports";
 import Comment from "./Comment";
@@ -6,8 +6,7 @@ import axios from "axios";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
 
-const Post = ({post}) => {
-
+const Post = ({ post }) => {
   const [user, setUser] = useState({});
   const url = `https://socialnetworkingsitebackend.onrender.com/api/users/${post?.userId}`;
 
@@ -30,7 +29,9 @@ const Post = ({post}) => {
             alt={user?.username}
           />
           <Link to={`profile/${user?.username}`}>
-            <p className="font-bold mr-2 text-black hover:text-indigo-900">{user?.username}</p>
+            <p className="font-bold mr-2 text-black hover:text-indigo-900">
+              {user?.username}
+            </p>
           </Link>
 
           <small className="text-slate-600 ml-1">

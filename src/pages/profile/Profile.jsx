@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { Header, Leftbar, Newsfeed, Rightbar } from "../../components/index";
+import { Header,  Newsfeed} from "../../components/index";
 import Banner from "./Banner";
-import Timeline from "./Timeline";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import CreatePost from "../../components/newsfeed/CreatePost";
+
 
 export default function Profile() {
   const [user, setUser] = useState({});
@@ -21,8 +22,11 @@ export default function Profile() {
   return (
     <div className="bg-slate-200 flex flex-col items-center justify-center">
       <Header />
-      <Banner />
-      <Newsfeed key={user?._id} username={username} />
+      <Banner key={user._id} user={user} />
+      <CreatePost key={user._id} user={user} />
+      <div className="mx-48">
+        <Newsfeed key={user?._id} username={username} />
+      </div>
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import CreatePost from "./CreatePost";
 import Post from "./Post";
 import axios from "axios";
 
@@ -18,8 +17,7 @@ const Newsfeed = ({ username }) => {
     fetchData();
   }, [username]);
   return (
-    <div className="flex flex-col mt-64 justify-center basis-1/2 px-16">
-      <CreatePost />
+    <div className="flex flex-col justify-center basis-1/2 px-16">
       {posts.map((post) => {
         return <Post key={post?._id} post={post} />;
       })}

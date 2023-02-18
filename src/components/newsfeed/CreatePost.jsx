@@ -1,12 +1,15 @@
-import React from "react";
-import user from "../../assets/sheldon.jfif";
 import { photos, live, feeling } from "./imports";
 
-const CreatePost = () => {
+const CreatePost = ({ user }) => {
+  const { username, profilePicture } = user;
   return (
-    <div className="w-full bg-white h-36 shadow-lg px-2 rounded-lg -mt-52">
+    <div className=" bg-white h-36 shadow-lg px-2 rounded-lg -mt-44">
       <div className="flex">
-        <img className="w-10 h-10 rounded-full m-3" src={user} alt="user" />
+        <img
+          className="w-10 h-10 rounded-full m-3"
+          src={profilePicture}
+          alt={username}
+        />
         <textarea
           className="w-full pt-5 h-14 pl-2 mt-3 bg-slate-100 hover:bg-slate-200 rounded-full"
           type="text"
