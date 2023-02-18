@@ -1,8 +1,10 @@
 import { useState, useEffect,useContext } from "react";
 import Reactions from "./Reactions";
-import { user, post, dots, close, love } from "./imports";
+import { dots, close, love } from "./imports";
 import Comment from "./Comment";
 import axios from "axios";
+import { format } from "timeago.js";
+import { Link } from "react-router-dom";
 
 const Post = ({post}) => {
 
@@ -16,15 +18,25 @@ const Post = ({post}) => {
       console.log("post ", res.data);
     };
     fetchData();
-  }, []);
+  }, [post?.userId]);
 
   return (
     <div className="flex flex-col bg-white rounded-lg shadow-lg my-8">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
-          <img className="w-10 h-10 rounded-full m-3" src={user?.profilePicture} alt={user?.username} />
-          <p className="font-bold mr-2">{user?.username}</p>
-          <small className="text-slate-600 ml-1">5 mins ago </small>
+          <img
+            className="w-10 h-10 rounded-full m-3"
+            src={user?.profilePicture}
+            alt={user?.username}
+          />
+          <Link to={`profile/${user?.username}`}>
+            <p className="font-bold mr-2 text-black hover:text-indigo-900">{user?.username}</p>
+          </Link>
+
+          <small className="text-slate-600 ml-1">
+            {" "}
+            {format(post?.createAt)}{" "}
+          </small>
         </div>
         <div className="flex">
           <img
