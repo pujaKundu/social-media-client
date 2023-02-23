@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useRef } from "react";
 
 const Login = () => {
+  const email = useRef();
+  const password = useRef( )
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(email.current.value,password.current.value);
+  }
   return (
     <div
       className="flex flex-col bg-gradient-to-r from-indigo-200 via-purple-500 to-pink-200 items-center justify-center"
@@ -8,7 +14,7 @@ const Login = () => {
     >
       <h1 className="text-indigo-200 text-4xl font-semibold mb-5">CircleUp</h1>
       <form
-        action=""
+        onSubmit={handleSubmit}
         className="flex flex-col justify-center items-center p-5 rounded form-wrapper relative"
         style={{
           background: "rgba(255, 255, 255, 0.8)",
@@ -20,13 +26,16 @@ const Login = () => {
           className="bg-transparent p-2 text-slate-700 border-b mb-4 border-indigo-300"
           type="email"
           placeholder="Email"
+          ref={email}
+          required
         />
         <input
           className="bg-transparent p-2 text-slate-700mb-2 border-b border-indigo-300"
           type="password"
-          name=""
-          id=""
+          minLength="6"
+          ref={password}
           placeholder="Password"
+          required
         />
         <button
           className="mt-2 text-indigo-900 border hover:shadow-lg border-indigo-300 rounded-full w-full p-1.5 mb-2"
