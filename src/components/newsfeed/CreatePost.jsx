@@ -11,12 +11,12 @@ const CreatePost = ({ user }) => {
           alt={username}
         />
         <textarea
-          className="w-full pt-5 h-14 pl-2 mt-3 bg-slate-100 hover:bg-slate-200 rounded-full"
+          className="w-full pt-5 h-14 pl-2 mt-3 bg-slate-100 hover:bg-slate-200 rounded-full text-slate-900"
           type="text"
           placeholder="What's on your mind?"
         />
       </div>
-      <div className="w-full h-1 bg-slate-200 my-2"></div>
+      <div className="w-full  h-1 bg-slate-200 my-2"></div>
       <div className="flex justify-between ">
         <div className="flex items-center mb-3 hover:bg-slate-200 rounded p-2">
           <img className="w-6 h-6 mr-2" src={live} alt="live video" />

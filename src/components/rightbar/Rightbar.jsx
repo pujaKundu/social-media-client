@@ -4,16 +4,15 @@ import FriendImg from "../../assets/leonard.webp";
 
 const Rightbar = () => {
   return (
-    <div className="h-screen scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 flex flex-col basis-1/4 pl-4 pt-4">
-      
-        <div className="flex items-center my-2">
-          <img className="w-8 h-8 mr-2" src={notification} alt="notification" />
-          <p>
-            <span className="font-semibold">Florida</span> &{" "}
-            <span className="font-semibold">3 others </span>have birthday today!
-          </p>
-        </div>
-      
+    <div className="h-screen scrollbar-thin scrollbar-thumb-gray-300 text-slate-900 scrollbar-track-gray-100 flex flex-col basis-1/4 pl-4 pt-4">
+      <div className="flex items-center my-2">
+        <img className="w-8 h-8 mr-2" src={notification} alt="notification" />
+        <p>
+          <span className="font-semibold">Florida</span> &{" "}
+          <span className="font-semibold">3 others </span>have birthday today!
+        </p>
+      </div>
+
       <div className="my-2">
         <img src={ad} alt="" className="w-72 rounded" />
       </div>

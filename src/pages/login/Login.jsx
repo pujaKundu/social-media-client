@@ -1,12 +1,26 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
+import { loginCall } from "../../apiCalls"
+import { AuthContext } from "../../context/AuthContext"
 
 const Login = () => {
   const email = useRef();
-  const password = useRef( )
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(email.current.value,password.current.value);
-  }
+  const password = useRef();
+  const { user, isFetching, error, dispatch } = useContext(AuthContext);
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    dispatch({ type: "LOGIN_START" });
+    try {
+      const res = await loginCall({
+        email: email.current.value,
+        password: password.current.value,
+      });
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+      console.log(user);
+    } catch (err) {
+      dispatch({ type: "LOGIN_FAILURE", payload: err });
+    }
+  };
   return (
     <div
       className="flex flex-col bg-gradient-to-r from-indigo-200 via-purple-500 to-pink-200 items-center justify-center"

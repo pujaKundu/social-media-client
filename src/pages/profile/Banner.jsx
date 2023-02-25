@@ -26,7 +26,10 @@ const Banner = ({ user }) => {
           alt=""
         />
       </div>
-      <div style={{ marginLeft: "36%" }} className="flex flex-col -mt-20 pb-10">
+      <div
+        style={{ marginLeft: "36%" }}
+        className="flex flex-col -mt-20 pb-10 text-slate-900"
+      >
         <p className="font-bold text-xl">{username}</p>
         <p className="text-slate-500 font-semibold">{description}</p>
         <p>

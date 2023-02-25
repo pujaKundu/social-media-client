@@ -16,7 +16,7 @@ import "./Leftbar.css";
 
 const Leftbar = () => {
   return (
-    <div className="h-screen scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 flex flex-col basis-1/4 pl-4 pt-4">
+    <div className="h-screen scrollbar-thin text-slate-900 scrollbar-thumb-gray-300 scrollbar-track-gray-100 flex flex-col basis-1/4 pl-4 pt-4">
       <div>
         <div>
           <div>
@@ -32,7 +32,7 @@ const Leftbar = () => {
           </div>
 
           <div>
-            <button className="bg-blue-800 hover:bg-blue-900 border-0 outline-0 text-white font-semibold mb-5">
+            <button className="bg-blue-800 hover:bg-blue-900 border-0 outline-0 text-white font-semibold mb-5 py-2 px-3 rounded">
               Show more
             </button>
           </div>

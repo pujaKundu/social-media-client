@@ -17,7 +17,7 @@ const Newsfeed = ({ username }) => {
     fetchData();
   }, [username]);
   return (
-    <div className="flex flex-col justify-center basis-1/2 px-16">
+    <div className="flex flex-col justify-center basis-1/2 px-16 text-slate-900">
       {posts.map((post) => {
         return <Post key={post?._id} post={post} />;
       })}
