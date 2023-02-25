@@ -1,12 +1,13 @@
 import React, { useContext, useRef } from "react";
-import { loginCall } from "../../apiCalls"
-import { AuthContext } from "../../context/AuthContext"
+import { loginCall } from "../../apiCalls";
+import { AuthContext } from "../../context/AuthContext";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Login = () => {
   const email = useRef();
   const password = useRef();
   const { user, isFetching, error, dispatch } = useContext(AuthContext);
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
@@ -44,7 +45,7 @@ const Login = () => {
           required
         />
         <input
-          className="bg-transparent p-2 text-slate-700mb-2 border-b border-indigo-300"
+          className="bg-transparent p-2 text-slate-700mb-2 border-b border-indigo-300 text-slate-700"
           type="password"
           minLength="6"
           ref={password}
@@ -55,9 +56,24 @@ const Login = () => {
           className="mt-2 text-indigo-900 border hover:shadow-lg border-indigo-300 rounded-full w-full p-1.5 mb-2"
           type="submit"
         >
-          Login
+          <span>
+            {isFetching ? (
+              <ClipLoader
+                color="fushia"
+                loading="true"
+                size={15}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+              />
+            ) : (
+              "Login"
+            )}
+          </span>
         </button>
-        <small className="text-purple-800 ">Forgot Password?</small>
+
+        <small className="text-slate-700">
+          Forgot Password?
+        </small>
         <button
           className="mt-2 text-indigo-900 border hover:shadow-lg border-indigo-300 rounded-full w-full p-1.5"
           type="submit"
