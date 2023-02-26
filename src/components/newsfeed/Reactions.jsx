@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
-const Reactions = ({ src }) => {
+const Reactions = ({ src, post }) => {
   const [reactCount, setReactCount] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
+  const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    setIsLiked(post?.likes.includes(user?._id))
+  },[user?._id,post.likes])
 
   const reactHandler = () => {
+    try {
+      axios.put(
+        `https://socialnetworkingsitebackend.onrender.com/api/posts/${post._id}/like`,
+        { userId: user?._id }
+      );
+    } catch (error) {}
     setReactCount(isLiked ? reactCount - 1 : reactCount + 1);
     setIsLiked(!isLiked);
   };

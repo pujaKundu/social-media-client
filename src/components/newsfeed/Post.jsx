@@ -6,6 +6,9 @@ import axios from "axios";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
 
+const noUser =
+  "https://icon-library.com/images/no-user-image-icon/no-user-image-icon-26.jpg";
+
 const Post = ({ post }) => {
   const [user, setUser] = useState({});
   const url = `https://socialnetworkingsitebackend.onrender.com/api/users/${post?.userId}`;
@@ -25,7 +28,7 @@ const Post = ({ post }) => {
         <div className="flex items-center">
           <img
             className="w-10 h-10 rounded-full m-3"
-            src={user?.profilePicture}
+            src={user?.profilePicture ? user?.profilePicture : noUser}
             alt={user?.username}
           />
           <Link to={`profile/${user?.username}`}>
@@ -57,7 +60,7 @@ const Post = ({ post }) => {
         <img className="w-full" src={post?.img} alt="post" />
       </div>
       <div className="flex">
-        <Reactions key="love" src={love} alt="love" />
+        <Reactions key={post?._id} src={love} post={post} alt="love" />
         <Comment />
       </div>
     </div>

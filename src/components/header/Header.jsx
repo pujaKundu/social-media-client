@@ -1,8 +1,9 @@
-import {  useState } from "react";
+import {  useContext, useState } from "react";
 import { menu, close } from "./imports";
 import ProfileImage from "./ProfileImage";
 import { Person, Notification, Chat } from "./icons";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 
 const Search = () => (
@@ -18,6 +19,7 @@ const Search = () => (
 );
 
 const Header = () => {
+  const user = useContext(AuthContext);
   
   const [toggle, setToggle] = useState(false);
   return (
@@ -26,7 +28,7 @@ const Header = () => {
       {/* left bar */}
       <div className=" text-center ">
         <span className="lg:text-3xl text-lg font-bold text-blue-900 font-mono">
-          Social Media
+          CircleUp
         </span>
       </div>
       {/* middle bar */}
@@ -45,7 +47,7 @@ const Header = () => {
             Homepage
           </Link>
           <Link
-            to="/profile/:username"
+            to={`/profile/${user?.user?.username}`}
             className="text-fuchsia-800 font-semibold hover:text-purple-900 cursor-pointer"
           >
             Profile
