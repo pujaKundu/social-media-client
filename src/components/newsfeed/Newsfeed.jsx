@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Post from "./Post";
 import axios from "axios";
+import { AuthContext } from "../../context/AuthContext";
 
 const Newsfeed = ({ username }) => {
   const [posts, setPosts] = useState([]);
-  const urlFeed = `https://socialnetworkingsitebackend.onrender.com/api/posts/timeline/63e663695568738e982a18cf`;
+  const {user}=useContext(AuthContext)
+  const urlFeed = `https://socialnetworkingsitebackend.onrender.com/api/posts/timeline/${user?._id}`;
   const urlProfile = `https://socialnetworkingsitebackend.onrender.com/api/posts/profile/${username}`;
   useEffect(() => {
     const fetchData = async () => {

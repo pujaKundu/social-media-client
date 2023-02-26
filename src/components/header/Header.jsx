@@ -1,8 +1,9 @@
-import { useState } from "react";
+import {  useState } from "react";
 import { menu, close } from "./imports";
 import ProfileImage from "./ProfileImage";
 import { Person, Notification, Chat } from "./icons";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 
 const Search = () => (
   <>
@@ -17,6 +18,7 @@ const Search = () => (
 );
 
 const Header = () => {
+  
   const [toggle, setToggle] = useState(false);
   return (
     // top navbar container

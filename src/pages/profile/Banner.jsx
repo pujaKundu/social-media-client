@@ -1,3 +1,5 @@
+const noUser =
+  "https://icon-library.com/images/no-user-image-icon/no-user-image-icon-26.jpg";
 const Banner = ({ user }) => {
   const {
     username,
@@ -6,11 +8,9 @@ const Banner = ({ user }) => {
     description,
     currentCity,
     hometown,
-    relationship,
-    followers,
   } = user;
   return (
-    <div className="mb-64 bg-gradient-to-b from-gray-700 to-white pb-4 ">
+    <div className="mb-64 bg-gradient-to-b from-gray-700 to-white pb-4 overflow-x-hidden">
       <div className="mx-60">
         <img
           style={{ height: "400px", width: "100vw", zIndex: "1" }}
@@ -22,7 +22,7 @@ const Banner = ({ user }) => {
             zIndex: "2",
           }}
           className="-mt-28 rounded-full w-52 h-52 ml-5 border-2"
-          src={profilePicture}
+          src={profilePicture ? profilePicture : noUser}
           alt=""
         />
       </div>
