@@ -2,6 +2,7 @@ import React, { useContext, useRef } from "react";
 import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
 import ClipLoader from "react-spinners/ClipLoader";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const email = useRef();
@@ -71,14 +72,12 @@ const Login = () => {
           </span>
         </button>
 
-        <small className="text-slate-700">
-          Forgot Password?
-        </small>
+        <small className="text-slate-700">Forgot Password?</small>
         <button
           className="mt-2 text-indigo-900 border hover:shadow-lg border-indigo-300 rounded-full w-full p-1.5"
           type="submit"
         >
-          Create new account
+          <Link to="/registration"> Create new account</Link>
         </button>
       </form>
     </div>
