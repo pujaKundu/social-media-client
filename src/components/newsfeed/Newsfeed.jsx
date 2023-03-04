@@ -13,13 +13,17 @@ const Newsfeed = ({ username }) => {
       const res = username
         ? await axios.get(urlProfile)
         : await axios.get(urlFeed);
-      setPosts(res.data);
+      setPosts(
+        res.data.sort((post1, post2) => {
+          return new Date(post2.createdAt) - new Date(post1.createdAt);
+        })
+      );
       //console.log("feed ", res.data);
     };
     fetchData();
   }, [username, user?._id]);
   return (
-    <div className="flex flex-col justify-center basis-1/2 px-16 text-slate-900">
+    <div className="flex flex-col justify-center basis-1/2  px-8 text-slate-900">
       {posts.map((post) => {
         return <Post key={post?._id} post={post} />;
       })}

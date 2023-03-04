@@ -23,7 +23,7 @@ export default function Profile() {
     <div className="bg-slate-200 flex flex-col items-center justify-center">
       <Header />
       <Banner key={user._id} user={user} />
-      <CreatePost key={user._id} user={user} />
+      <CreatePost key={user.username} user={user} />
       <div className="mx-48">
         <Newsfeed key={user?._id} username={username} />
       </div>

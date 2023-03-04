@@ -21,7 +21,7 @@ const Banner = ({ user }) => {
           style={{
             zIndex: "2",
           }}
-          className="-mt-28 rounded-full w-52 h-52 ml-5 border-2"
+          className="lg:-mt-28 rounded-full lg:w-52 lg:h-52 sm:w-20 sm:h-20 sm:-mt-12 sm:mr-12 ml-5 border-2"
           src={profilePicture ? profilePicture : noUser}
           alt=""
         />

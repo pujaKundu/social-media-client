@@ -17,7 +17,7 @@ const Post = ({ post }) => {
     const fetchData = async () => {
       const res = await axios.get(url);
       setUser(res.data);
-      console.log("post ", res.data);
+      //console.log("post ", res.data);
     };
     fetchData();
   }, [post?.userId]);
