@@ -4,6 +4,7 @@ import Banner from "./Banner";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import CreatePost from "../../components/newsfeed/CreatePost";
+import Friends from "./Friends";
 
 
 export default function Profile() {
@@ -15,7 +16,7 @@ export default function Profile() {
     const fetchData = async () => {
       const res = await axios.get(url);
       setUser(res.data);
-      console.log("post ", res.data);
+     // console.log("post ", res.data);
     };
     fetchData();
   }, [user?.userId]);
@@ -24,8 +25,9 @@ export default function Profile() {
       <Header />
       <Banner key={user._id} user={user} />
       <CreatePost key={user.username} user={user} />
-      <div className="mx-48">
+      <div className="mx-48 flex justify-between">
         <Newsfeed key={user?._id} username={username} />
+        <Friends  key={ user?._id} id={user?._id} />
       </div>
     </div>
   );

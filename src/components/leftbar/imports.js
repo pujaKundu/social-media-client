@@ -1,5 +1,5 @@
 import Feed from "../../assets/feed.png";
-import Friends from "../../assets/add-group.png";
+import Friends from '../../assets/addgroup.png'
 import Recent from "../../assets/recent.png";
 import Groups from "../../assets/people.png";
 import Events from "../../assets/calendar.png";
