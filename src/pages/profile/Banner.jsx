@@ -12,7 +12,7 @@ const Banner = ({ user }) => {
   } = user;
 
   return (
-    <div className="mb-64 pb-4 overflow-x-hidden ">
+    <div className="mb-64 pb-4 overflow-x-hidden  ">
       <div>
         <div className="mx-60">
           <img
@@ -31,7 +31,7 @@ const Banner = ({ user }) => {
         </div>
         <div
           style={{ marginLeft: "36%" }}
-          className="flex flex-col -mt-20 pb-10 text-slate-900"
+          className="flex flex-col -mt-20 pb-5 text-slate-900"
         >
           <p className="font-bold text-xl">{username}</p>
           <p className="text-slate-500 font-semibold">{description}</p>

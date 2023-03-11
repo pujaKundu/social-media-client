@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -7,7 +7,7 @@ const Registration = () => {
   const email = useRef();
   const password = useRef();
   const confirmPassword = useRef();
-  
+
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,7 +26,8 @@ const Registration = () => {
         );
         navigate("/login");
       } catch (err) {
-        console.log(err);
+        alert(err)
+       
       }
     }
   };
@@ -96,14 +97,14 @@ const Registration = () => {
             )}
           </span> */}
         </button>
-
+      
         <small className="text-slate-700">Already have an account?</small>
 
         <button
           className="mt-2 text-indigo-900 border hover:shadow-lg border-indigo-300 rounded-full w-full p-1.5"
           type="submit"
         >
-          <Link to="/login"> Log in</Link>
+          <Link to="/login">Log in</Link>
         </button>
       </form>
     </div>

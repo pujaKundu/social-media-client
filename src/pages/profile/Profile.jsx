@@ -34,14 +34,14 @@ export default function Profile() {
   }
 
   return (
-    <div className="bg-slate-200 flex flex-col items-center justify-center bg-gradient-to-r from-indigo-200 via-pink-200 to-purple-400 ">
+    <div className="bg-slate-200 flex flex-col items-center justify-center  bg-gradient-to-r from-indigo-200 via-pink-200 to-purple-300">
       <Header />
       <Banner key={user._id} user={user} />
       <CreatePost key={user.username} user={user} />
-      <h2 className="font-semibold text-3xl text-slate-600 mt-7 uppercase">
+      <h2 className="font-semibold text-3xl text-slate-800 mt-7 uppercase">
         <span>{username}</span>'s timeline
       </h2>
-      <div className="mx-48 flex justify-between">
+      <div className="mx-48 flex justify-between ">
         <Newsfeed key={user?._id} username={username} />
         <Friends key={user?._id} id={user?._id} />
       </div>

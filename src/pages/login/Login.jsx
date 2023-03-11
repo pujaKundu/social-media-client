@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
 import ClipLoader from "react-spinners/ClipLoader";
@@ -7,7 +7,9 @@ import { Link } from "react-router-dom";
 const Login = () => {
   const email = useRef();
   const password = useRef();
-  const { user, isFetching, error,isError, dispatch } = useContext(AuthContext);
+  const { user, isFetching, error, dispatch } = useContext(AuthContext);
+  const [err, setErr] = useState("");
+  const [isError, setIsError] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,9 +20,11 @@ const Login = () => {
         password: password.current.value,
       });
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-      console.log(user);
+     
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err });
+      setIsError(true);
+      setErr(err);
     }
   };
   return (
@@ -71,7 +75,7 @@ const Login = () => {
             )}
           </span>
         </button>
-
+        {isError && <small className="text-red-700">Login failed</small>}
         <small className="text-slate-700">Forgot Password?</small>
         <button
           className="mt-2 text-indigo-900 border hover:shadow-lg border-indigo-300 rounded-full w-full p-1.5"

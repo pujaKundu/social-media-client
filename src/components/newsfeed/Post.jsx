@@ -4,6 +4,7 @@ import { dots, close, love } from "./imports";
 import axios from "axios";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
+import CreatePost from "./CreatePost";
 
 const noUser =
   "https://icon-library.com/images/no-user-image-icon/no-user-image-icon-26.jpg";
@@ -49,6 +50,7 @@ const Post = ({ post, setPosts }) => {
 
   return (
     <div className="flex flex-col bg-white rounded-lg shadow-lg my-8">
+      
       <div className="flex items-center justify-between">
         <div className="flex items-center m-2">
           <img
@@ -76,7 +78,7 @@ const Post = ({ post, setPosts }) => {
         <div className="flex items-center">
           <span className="text-sm mr-4">{format(post.createdAt)}</span>
           <img
-            className="w-6 h-6 cursor-pointer"
+            className="w-4 h-4 cursor-pointer"
             src={close}
             alt="delete"
             onClick={deletePost}

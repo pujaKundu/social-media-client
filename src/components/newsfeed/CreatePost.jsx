@@ -42,7 +42,7 @@ const CreatePost = ({ user }) => {
   };
 
   return (
-    <div className="share -mt-44 bg-white">
+    <div className="share -mt-52 bg-white">
       <div className="shareWrapper">
         <div className="shareTop">
           <img

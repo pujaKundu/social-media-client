@@ -33,7 +33,7 @@ const Header = () => {
       </div>
       {/* middle bar */}
       <div className="hidden lg:block">
-        <Search />
+        {/* <Search /> */}
       </div>
       {/* right bar */}
 
