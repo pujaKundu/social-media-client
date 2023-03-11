@@ -50,27 +50,31 @@ const Post = ({ post, setPosts }) => {
 
   return (
     <div className="flex flex-col bg-white rounded-lg shadow-lg my-8">
-      
-      <div className="flex items-center justify-between">
-        <div className="flex items-center m-2">
+      <div className="flex items-center justify-between border-b">
+        <div className="flex items-center m-2 ">
           <img
-            className="w-12 h-12 rounded-full mr-4"
+            className="w-8 h-8 rounded-full mr-4"
             src={user.profilePicture || noUser}
             alt="user"
           />
           <Link
             to={`/profile/${user.username}`}
-            className="text-lg font-medium hover:underline"
+            className=" font-medium hover:underline text-indigo-800"
           >
             {user.username}
           </Link>
         </div>
         <img className="w-6 h-6" src={dots} alt="options" />
       </div>
-      <div className="my-4">
-        <img className="object-cover w-full h-80" src={imgSrc} alt="post" />
+      <div>
+        <p className="text-slate-900 ml-5 my-4">{post?.description}</p>
       </div>
-      <div className="flex items-center justify-between px-4">
+      {post?.img && (
+        <div className="my-4">
+          <img className="object-cover w-full h-80" src={imgSrc} alt="post" />
+        </div>
+      )}
+      <div className="flex items-center justify-between px-4 border-t">
         <div className="flex items-center">
           {/* <img className="w-6 h-6 mr-2" src={love} alt="like" /> */}
           <Reactions post={post} src={love} />
@@ -85,7 +89,6 @@ const Post = ({ post, setPosts }) => {
           />
         </div>
       </div>
-      
     </div>
   );
 };

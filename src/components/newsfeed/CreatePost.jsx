@@ -42,7 +42,7 @@ const CreatePost = ({ user }) => {
   };
 
   return (
-    <div className="share -mt-52 bg-white">
+    <div className="share -mt-44 bg-white " style={{width:'600px'}}>
       <div className="shareWrapper">
         <div className="shareTop">
           <img
@@ -72,7 +72,7 @@ const CreatePost = ({ user }) => {
           </div>
         )}
         <form className="shareBottom" onSubmit={handleSubmit}>
-          <div className="shareOptions -mt-2">
+          <div className="shareOptions -mt-2 pl-8">
             <label
               htmlFor="file"
               className="shareOption hover:bg-slate-200 p-2 rounded"
@@ -100,7 +100,7 @@ const CreatePost = ({ user }) => {
             </div>
 
             <button
-              className="shareButton flex ml-3 bg-purple-700 hover:bg-purple-900 px-2"
+              className="shareButton flex ml-3 bg-purple-700 hover:bg-purple-900 px-3"
               type="submit"
             >
               <img src={share} alt="" className="w-6 h-6 mr-2" />

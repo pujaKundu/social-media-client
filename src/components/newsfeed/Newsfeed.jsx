@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Post from "./Post";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
+import CreatePost from "./CreatePost";
 
 const Newsfeed = ({ username }) => {
   const [posts, setPosts] = useState([]);
@@ -24,6 +25,7 @@ const Newsfeed = ({ username }) => {
   }, [username, user?._id]);
   return (
     <div className="flex flex-col justify-center basis-1/2 px-8 text-slate-900">
+      
       {posts.map((post) => {
         return <Post key={post?._id} post={post} setPosts={setPosts} />;
       })}
