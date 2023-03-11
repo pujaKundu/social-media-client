@@ -16,7 +16,7 @@ import "./Leftbar.css";
 
 const Leftbar = () => {
   return (
-    <div className="h-screen scrollbar-thin text-slate-900 scrollbar-thumb-gray-300 scrollbar-track-gray-100 flex flex-col basis-1/4 pl-4 pt-4">
+    <div className="h-screen scrollbar-thin text-slate-900 scrollbar-thumb-gray-400 scrollbar-track-gray-100 flex flex-col basis-1/4 pl-4 pt-4">
       <div>
         <div>
           <div>
