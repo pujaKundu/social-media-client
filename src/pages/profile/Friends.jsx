@@ -13,7 +13,7 @@ const Friends = ({ id }) => {
     const fetchData = async () => {
       const res = await axios.get(`${url}/users/friends/${id}`);
       setFriends(res.data);
-      console.log("friends", res.data);
+      //console.log("friends", res.data);
     };
     fetchData();
   }, [id]);
@@ -22,7 +22,7 @@ const Friends = ({ id }) => {
     <div className="bg-slate-200 mt-20 mr-8">
       <h3 className="text-xl font-bold text-purple-900">Friends</h3>
       {friends.map((friend) => (
-        <div className="bg-slate-300 rounded flex py-5 px-14" key={friend.id}>
+        <div className="bg-slate-300 rounded flex py-5 px-14" key={friend?.username}>
           <img
             className="w-6 h-6 rounded-full mr-2"
             src={friend?.profilePicture || noUser}

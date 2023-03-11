@@ -1,100 +1,117 @@
 import { useRef, useState } from "react";
 import { photos, live, feeling } from "./imports";
 import share from "../../assets/share.png";
+import cancel from "../../assets/close.png";
 import axios from "axios";
+import "./CreatePost.css";
+
+
 
 const noUser =
   "https://icon-library.com/images/no-user-image-icon/no-user-image-icon-26.jpg";
+
 const CreatePost = ({ user }) => {
+  
+  const postsUrl = "https://socialnetworkingsitebackend.onrender.com/api/posts";
+  const uploadUrl =
+    "https://socialnetworkingsitebackend.onrender.com/api/upload";
   //const { user } = useContext(AuthContext);
   const description = useRef();
   const [file, setFile] = useState(null);
   const { profilePicture, username } = user;
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const newPost = {
-      userId: user._id,
-      description: description.current.value,
-    };
-    if (file) {
-      const data = new FormData();
-      const fileName = Date.now() + file.name;
-      data.append("file", file);
-      data.append("name", fileName);
-      newPost.img = fileName;
-      try {
-        await axios.post(
-          "https://socialnetworkingsitebackend.onrender.com/api/upload",
-          data
-        );
-        window.location.reload();
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    try {
-      await axios.post(
-        "https://socialnetworkingsitebackend.onrender.com/api/posts",
-        newPost
-      ),
-        { withCredentials: true };
-    } catch (error) {}
+     e.preventDefault();
+     const newPost = {
+       userId: user._id,
+       description: description.current.value,
+     };
+     if (file) {
+       const data = new FormData();
+       const fileName = Date.now() + file.name;
+       data.append("name", fileName);
+       data.append("file", file);
+       newPost.img = fileName;
+       console.log(newPost);
+       try {
+         await axios.post(uploadUrl, data);
+       } catch (err) {}
+     }
+     try {
+       await axios.post(postsUrl, newPost);
+       window.location.reload();
+     } catch (err) {}
+    
   };
+
   return (
-    <form
-      className="bg-white h-36 shadow-lg px-2 rounded-lg -mt-44 w-2/3"
-      onSubmit={handleSubmit}
-    >
-      <div className="flex">
-        <img
-          className="w-10 h-10 rounded-full m-3"
-          src={profilePicture ? profilePicture : noUser}
-          alt={username}
-        />
-        <textarea
-          className="w-full pt-5 h-14 pl-2 mt-3 bg-slate-100 hover:bg-slate-200 rounded-full text-slate-900"
-          type="text"
-          ref={description}
-          placeholder={`What's on your mind ${username}?`}
-        />
-      </div>
-      <div className="w-full  h-1 bg-slate-200 my-2"></div>
-      <div className="flex justify-between ">
-        
-          <div className="flex items-center mb-3 hover:bg-slate-200 rounded p-2">
-            <img className="w-6 h-6 mr-2" src={live} alt="live video" />
-            <p className="text-gray-500 font-semibold ">Live video</p>
-          </div>
-          <label
-            htmlFor="file"
-            className="flex items-center mb-3 hover:bg-slate-200 rounded p-2"
-          >
-            <img className="w-6 h-6  mr-2" src={photos} alt="photos" />
-            <p className="text-gray-500 font-semibold ">Photo/video</p>
-            <input
-              type="file"
-              id="file"
-              accept=".png,.jpeg,.jpg"
-              style={{
-                display: "none",
-              }}
-              onChange={(e) => setFile(e.target.files[0])}
-            />
-          </label>
-        
-        <div className="flex items-center mb-3 hover:bg-slate-200 rounded p-2">
-          <img className="w-6 h-6  mr-2" src={feeling} alt="feeling" />
-          <p className="text-gray-500 font-semibold ">Feeling/activity</p>
+    <div className="share -mt-44 bg-white">
+      <div className="shareWrapper">
+        <div className="shareTop">
+          <img
+            className="shareProfileImg"
+            src={profilePicture ? user.profilePicture : noUser}
+            alt=""
+          />
+          <textarea
+            placeholder={"What's in your mind " + username + "?"}
+            className="shareInput pt-3 rounded-full pl-5 bg-slate-100 hover:bg-slate-200 text-slate-800"
+            ref={description}
+          />
         </div>
-        <button className="flex items-center mb-3 bg-slate-200 hover:bg-slate-300 rounded p-2">
-          <img className="w-6 h-6  mr-2" src={share} alt="share" />
-          <p className="text-gray-500 font-semibold " type="submit">
-            Post
-          </p>
-        </button>
+        <hr className="shareHr" />
+        {file && (
+          <div className="shareImgContainer">
+            <img
+              className="shareImg w-64 m-auto"
+              src={URL.createObjectURL(file)}
+              alt=""
+            />
+            <img
+              src={cancel}
+              className="shareCancelImg w-4"
+              onClick={() => setFile(null)}
+            />
+          </div>
+        )}
+        <form className="shareBottom" onSubmit={handleSubmit}>
+          <div className="shareOptions -mt-2">
+            <label
+              htmlFor="file"
+              className="shareOption hover:bg-slate-200 p-2 rounded"
+            >
+              <img src={photos} alt="" className="w-6 h-6 mr-2" />
+              <span className="shareOptionText text-slate-500">
+                Photo/video
+              </span>
+              <input
+                style={{ display: "none" }}
+                type="file"
+                id="file"
+                accept=".png,.jpeg,.jpg"
+                onChange={(e) => setFile(e.target.files[0])}
+              />
+            </label>
+
+            <div className="shareOption hover:bg-slate-200 p-2 rounded">
+              <img src={live} alt="" className="w-6 h-6 mr-2" />
+              <span className="shareOptionText text-slate-500">Live</span>
+            </div>
+            <div className="shareOption hover:bg-slate-200 p-2 rounded">
+              <img src={feeling} alt="" className="w-6 h-6 mr-2" />
+              <span className="shareOptionText text-slate-500">Feelings</span>
+            </div>
+            <button
+              className="shareButton flex ml-3 bg-purple-700 hover:bg-purple-900 px-2"
+              type="submit"
+            >
+              <img src={share} alt="" className="w-6 h-6 mr-2" />
+              Post
+            </button>
+          </div>
+        </form>
       </div>
-    </form>
+    </div>
   );
 };
 
