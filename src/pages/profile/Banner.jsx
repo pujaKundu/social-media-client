@@ -12,7 +12,7 @@ const Banner = ({ user }) => {
   } = user;
 
   return (
-    <div className="mb-64 bg-gradient-to-b from-gray-700 to-white pb-4 overflow-x-hidden ">
+    <div className="mb-64 pb-4 overflow-x-hidden ">
       <div>
         <div className="mx-60">
           <img

@@ -8,8 +8,8 @@ const Reactions = ({ src, post }) => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    setIsLiked(post?.likes.includes(user?._id))
-  },[user?._id,post.likes])
+    setIsLiked(post?.likes.includes(user?._id));
+  }, [user?._id, post.likes]);
 
   const reactHandler = () => {
     try {
@@ -22,7 +22,7 @@ const Reactions = ({ src, post }) => {
     setIsLiked(!isLiked);
   };
   return (
-    <div className="flex items-center">
+    <div className="flex items-center ">
       {reactCount == 0 ? (
         ""
       ) : reactCount == 1 ? (
@@ -37,7 +37,7 @@ const Reactions = ({ src, post }) => {
 
       <img
         onClick={reactHandler}
-        className="w-6 h-6 m-2"
+        className="w-6 h-6 mb-2"
         src={src}
         alt="love"
       />

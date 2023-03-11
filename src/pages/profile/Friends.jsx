@@ -19,10 +19,10 @@ const Friends = ({ id }) => {
   }, [id]);
 
   return (
-    <div className="bg-slate-200 mt-20 mr-8">
+    <div className="mt-20 mr-8">
       <h3 className="text-xl font-bold text-purple-900">Friends</h3>
       {friends.map((friend) => (
-        <div className="bg-slate-300 rounded flex py-5 px-14" key={friend?.username}>
+        <div className="bg-slate-100 rounded flex py-3 px-20" key={friend?.username}>
           <img
             className="w-6 h-6 rounded-full mr-2"
             src={friend?.profilePicture || noUser}

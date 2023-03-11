@@ -1,7 +1,6 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import Reactions from "./Reactions";
 import { dots, close, love } from "./imports";
-import Comment from "./Comment";
 import axios from "axios";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
@@ -9,8 +8,10 @@ import { Link } from "react-router-dom";
 const noUser =
   "https://icon-library.com/images/no-user-image-icon/no-user-image-icon-26.jpg";
 
-const Post = ({ post }) => {
+const Post = ({ post, setPosts }) => {
   const [user, setUser] = useState({});
+  const [imgSrc, setImgSrc] = useState("");
+
   const url = `https://socialnetworkingsitebackend.onrender.com/api/users/${post?.userId}`;
 
   useEffect(() => {
@@ -22,47 +23,67 @@ const Post = ({ post }) => {
     fetchData();
   }, [post?.userId]);
 
+  useEffect(() => {
+    const fetchImage = async () => {
+      const res = await axios.get(post?.img, {
+        responseType: "arraybuffer",
+      });
+      const blob = new Blob([res?.data], { type: "image/png" });
+      const url = URL.createObjectURL(blob);
+      setImgSrc(url);
+    };
+    fetchImage();
+  }, [post?.img]);
+
+  //delete handler
+  const deletePost = async () => {
+    try {
+      await axios.delete(
+        `https://socialnetworkingsitebackend.onrender.com/api/posts/${post._id}`
+      );
+      setPosts((prevPosts) => prevPosts.filter((p) => p._id !== post._id));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="flex flex-col bg-white rounded-lg shadow-lg my-8">
       <div className="flex items-center justify-between">
-        <div className="flex items-center">
+        <div className="flex items-center m-2">
           <img
-            className="w-10 h-10 rounded-full m-3"
-            src={user?.profilePicture ? user?.profilePicture : noUser}
-            alt={user?.username}
+            className="w-12 h-12 rounded-full mr-4"
+            src={user.profilePicture || noUser}
+            alt="user"
           />
-          <Link to={`profile/${user?.username}`}>
-            <p className="font-bold mr-2 text-black hover:text-indigo-900">
-              {user?.username}
-            </p>
+          <Link
+            to={`/profile/${user.username}`}
+            className="text-lg font-medium hover:underline"
+          >
+            {user.username}
           </Link>
-
-          <small className="text-slate-600 ml-1">
-            {" "}
-            {format(post?.createAt)}{" "}
-          </small>
         </div>
-        <div className="flex">
+        <img className="w-6 h-6" src={dots} alt="options" />
+      </div>
+      <div className="my-4">
+        <img className="object-cover w-full h-80" src={imgSrc} alt="post" />
+      </div>
+      <div className="flex items-center justify-between px-4">
+        <div className="flex items-center">
+          {/* <img className="w-6 h-6 mr-2" src={love} alt="like" /> */}
+          <Reactions post={post} src={love} />
+        </div>
+        <div className="flex items-center">
+          <span className="text-sm mr-4">{format(post.createdAt)}</span>
           <img
-            className="mr-2 w-4 h-4 cursor-pointer"
-            src={dots}
-            alt="sub-menu"
-          />
-          <img
-            className="mr-3 w-4 h-4 cursor-pointer"
+            className="w-6 h-6 cursor-pointer"
             src={close}
-            alt="close"
+            alt="delete"
+            onClick={deletePost}
           />
         </div>
       </div>
-      <div>
-        <p className="pl-3 pb-3">{post?.description}</p>
-        <img className="w-full" src={post?.img} alt="post" />
-      </div>
-      <div className="flex">
-        <Reactions key={post?._id} src={love} post={post} alt="love" />
-        <Comment />
-      </div>
+      
     </div>
   );
 };

@@ -25,7 +25,7 @@ const Newsfeed = ({ username }) => {
   return (
     <div className="flex flex-col justify-center basis-1/2 px-8 text-slate-900">
       {posts.map((post) => {
-        return <Post key={post?._id} post={post} />;
+        return <Post key={post?._id} post={post} setPosts={setPosts} />;
       })}
     </div>
   );

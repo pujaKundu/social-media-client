@@ -1,33 +1,49 @@
 import { useState, useEffect } from "react";
-import { Header,  Newsfeed} from "../../components/index";
+import { Header, Newsfeed } from "../../components";
 import Banner from "./Banner";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import CreatePost from "../../components/newsfeed/CreatePost";
 import Friends from "./Friends";
 
-
 export default function Profile() {
   const [user, setUser] = useState({});
-  const username = useParams().username;
-  const url = `https://socialnetworkingsitebackend.onrender.com/api/users?username=${username}`;
+  const [isLoading, setIsLoading] = useState(true);
+  const { username } = useParams();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await axios.get(url);
-      setUser(res.data);
-     // console.log("post ", res.data);
+    const fetchUser = async () => {
+      try {
+        const url = buildUrl(username);
+        const res = await axios.get(url);
+        setUser(res.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.error(error);
+      }
     };
-    fetchData();
-  }, [user?.userId]);
+    fetchUser();
+  }, [username]);
+
+  const buildUrl = (username) => {
+    return `https://socialnetworkingsitebackend.onrender.com/api/users?username=${username}`;
+  };
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
   return (
-    <div className="bg-slate-200 flex flex-col items-center justify-center">
+    <div className="bg-slate-200 flex flex-col items-center justify-center bg-gradient-to-r from-indigo-200 via-pink-200 to-purple-400 ">
       <Header />
       <Banner key={user._id} user={user} />
       <CreatePost key={user.username} user={user} />
+      <h2 className="font-semibold text-3xl text-slate-600 mt-7 uppercase">
+        <span>{username}</span>'s timeline
+      </h2>
       <div className="mx-48 flex justify-between">
         <Newsfeed key={user?._id} username={username} />
-        <Friends  key={ user?._id} id={user?._id} />
+        <Friends key={user?._id} id={user?._id} />
       </div>
     </div>
   );
