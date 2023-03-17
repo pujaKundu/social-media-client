@@ -34,7 +34,7 @@ export default function Profile() {
   }
 
   return (
-    <div className="bg-slate-200 flex flex-col items-center justify-center  bg-gradient-to-r from-indigo-200 via-pink-200 to-purple-300">
+    <div className="bg-slate-200 flex flex-col items-center justify-center  bg-gradient-to-r from-indigo-200 via-slate-200 to-purple-300">
       <Header />
       <Banner key={user._id} user={user} />
       <CreatePost key={user.username} user={user} />

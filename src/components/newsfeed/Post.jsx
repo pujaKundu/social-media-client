@@ -14,6 +14,7 @@ const Post = ({ post, setPosts }) => {
   const [imgSrc, setImgSrc] = useState("");
 
   const url = `https://socialnetworkingsitebackend.onrender.com/api/users/${post?.userId}`;
+  const imageUrl = `https://socialnetworkingsitebackend.onrender.com/images/${post?.img}`;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,17 +25,6 @@ const Post = ({ post, setPosts }) => {
     fetchData();
   }, [post?.userId]);
 
-  useEffect(() => {
-    const fetchImage = async () => {
-      const res = await axios.get(post?.img, {
-        responseType: "arraybuffer",
-      });
-      const blob = new Blob([res?.data], { type: "image/png" });
-      const url = URL.createObjectURL(blob);
-      setImgSrc(url);
-    };
-    fetchImage();
-  }, [post?.img]);
 
   //delete handler
   const deletePost = async () => {
@@ -47,6 +37,7 @@ const Post = ({ post, setPosts }) => {
       console.log(error);
     }
   };
+  console.log(imgSrc);
 
   return (
     <div className="flex flex-col bg-white rounded-lg shadow-lg my-8">
@@ -71,7 +62,11 @@ const Post = ({ post, setPosts }) => {
       </div>
       {post?.img && (
         <div className="my-4">
-          <img className="object-cover w-full h-80" src={imgSrc} alt="post" />
+          <img
+            className="object-cover w-full m-auto h-80"
+            src={imageUrl}
+            alt="post"
+          />
         </div>
       )}
       <div className="flex items-center justify-between px-4 border-t">
