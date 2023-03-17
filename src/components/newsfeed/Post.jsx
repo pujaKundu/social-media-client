@@ -58,7 +58,7 @@ const Post = ({ post, setPosts }) => {
         <img className="w-6 h-6" src={dots} alt="options" />
       </div>
       <div>
-        <p className="text-slate-900 ml-5 my-4">{post?.description}</p>
+        <p className="text-slate-900 mx-5 my-4 ">{post?.description}</p>
       </div>
       {post?.img && (
         <div className="my-4">

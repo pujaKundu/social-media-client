@@ -12,10 +12,9 @@ const CreatePost = ({ user }) => {
   const postsUrl = "https://socialnetworkingsitebackend.onrender.com/api/posts";
   const uploadUrl =
     "https://socialnetworkingsitebackend.onrender.com/api/upload";
-  //const { user } = useContext(AuthContext);
+
   const description = useRef();
   const [file, setFile] = useState(null);
-  const [emojiVisible, setEmojiVisible] = useState(false);
   const { profilePicture, username } = user;
 
   const handleSubmit = async (e) => {
@@ -33,7 +32,8 @@ const CreatePost = ({ user }) => {
       console.log(newPost);
       try {
         await axios.post(uploadUrl, data);
-      } catch (err) {}
+      } catch (err) { }
+      
     }
     try {
       await axios.post(postsUrl, newPost);
@@ -105,6 +105,7 @@ const CreatePost = ({ user }) => {
             >
               <img src={share} alt="" className="w-6 h-6 mr-2" />
               Post
+              
             </button>
           </div>
         </form>

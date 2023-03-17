@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useRef, useState ,useEffect} from "react";
 import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
 import ClipLoader from "react-spinners/ClipLoader";
@@ -10,6 +10,18 @@ const Login = () => {
   const { user, isFetching, error, dispatch } = useContext(AuthContext);
   const [err, setErr] = useState("");
   const [isError, setIsError] = useState(false);
+
+  useEffect(() => {
+    let timer;
+    if (isError) {
+      timer = setTimeout(() => {
+        setIsError(false);
+      }, 5000);
+    }
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [isError]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,6 +39,7 @@ const Login = () => {
       setErr(err);
     }
   };
+
   return (
     <div
       className="flex flex-col bg-gradient-to-r from-indigo-200 via-purple-500 to-pink-200 items-center justify-center"

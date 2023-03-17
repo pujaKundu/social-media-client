@@ -12,12 +12,13 @@ const Banner = ({ user }) => {
   } = user;
 
   return (
-    <div className="mb-64 pb-4 overflow-x-hidden ">
+    <div className="mb-64 pb-4 overflow-x-hidden max-w-screen">
       <div>
         <div className="mx-60">
           <img
-            style={{ height: "400px", width: "100vw", zIndex: "1" }}
+            style={{ height: "400px",width:'900px', zIndex: "1" }}
             src={coverPicture}
+         
             alt=""
           />
           <img

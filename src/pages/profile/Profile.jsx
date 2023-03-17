@@ -5,6 +5,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import CreatePost from "../../components/newsfeed/CreatePost";
 import Friends from "./Friends";
+import loader from '../../assets/loader.webp'
 
 export default function Profile() {
   const [user, setUser] = useState({});
@@ -30,9 +31,13 @@ export default function Profile() {
   };
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="flex items-center justify-center w-screen bg-slate-100 h-screen">
+        <img className=" w-30 h-30 rounded-full" src={loader} alt="" />
+      </div>
+    );
   }
-
+  
   return (
     <div className="bg-slate-200 flex flex-col items-center justify-center  bg-gradient-to-r from-indigo-200 via-slate-200 to-purple-300">
       <Header />
